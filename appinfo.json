@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "vendor": "My Company",
   "type": "web",
-  "main": "index.html",
+  "main": "login.html",
   "title": "pushbullet",
   "icon": "icon.png",
   "largeIcon": "largeIcon.png"
