@@ -2,130 +2,40 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>I do We Know</title>
+    <title>Push Bullet for webOS</title>
     <link rel="stylesheet" href="main.css" type = "text/css">
+    <link rel="stylesheet" href="reset.css" type = "text/css">
     <script src="http://alexschneider.github.io/pushbullet-js/pushbullet.min.js" type="text/javascript"></script>
-
-    <br/><br/><br/>
-    <h1>PushBullet for WebOS</h1>
-<br/><br/>
-
-<script type="text/javascript">
-    let token;
-    var devID;
-    window.onload= function login() {
-        //token = document.getElementById("token");
-        //PushBullet.APIKey= token.value;
-	PushBullet.APIKey= "o.IWTQpSmMDgY4nakyuAc1ErJ7euO4QUih";
-
-
-        let res = PushBullet.devices();
-        devID = res.devices[0].iden;
-        document.getElementById("result").innerHTML = "Your Device ID : "+ devID;
-
-        PushBullet.push("note",devID, null, {title: "LOGIN", body: "login to PushBullet on WebOS"});
-    }
-    function send() {
-        let msg = document.getElementById("msg");
-        PushBullet.push("note", devID, null, {title: "MAG", body: msg.value});
-    }
-
-    function send_to() {
-        let msg_to = document.getElementById("msg_to");
-        let email = document.getElementById("email");
-        document.getElementById("email").innerHTML = "send msg to : "+ email.value;
-
-        PushBullet.push("link", null, email.value, {title: "MAG", body: msg_to.value});
-    }
-
-    function get_user() {
-        var res = PushBullet.user();
-        document.getElementById("user").innerHTML = "user : "+ res.email ;
-     }
-
-     function get_push(i) {
-         PushBullet.pushHistory(function(err, res) {
-            if(err){
-                throw err;
-            }
-            else {
-                if( i< res.pushes.length)
-                    return res.pushes[i].body;
-            }
-        });
-     }
-     function del_history() {
-        document.getElementById("history").innerHTML = "delete ";
-        PushBullet.pushHistory(function(err, res) {
-        if(err) {
-            throw err;
-        } else {
-                let res =PushBullet.pushHistory();
-                for(var i=0; i<res.pushes.length; i++) {
-                    var pushId = res.pushes[i].iden;
-                    PushBullet.deletePush(pushId);
-                }
-                document.getElementById("history").innerHTML = "delete history";
-            }
-        });
-    }
-
-     function get_history() {
-        PushBullet.pushHistory(function(err, res) {
-            if(err){
-                throw err;
-            }
-            else {
-                let push=res.pushes[0].body;
-                for (var i = 1; i < res.pushes.length; i++) {
-                    push = push +" "+res.pushes[i].body;
-                }
-                document.getElementById("history").innerHTML = push;
-
-            }
-        });
-     }
-
-     function gonext(){
-     	location.href = "test.html";
-     }
-</script>
+</head>
 
 <body>
-    <center>
+    <nav class=menu>
+      <div class = "title">
+        <h1>Push Bullet</h1>
+        <h2>for webOS</h2>
+      </div>
+
+      <br/>
+      <ul>
+          <li><a href="#" onclick="load_content('contents','page1.html')">me</a></li>
+          <li><a href="#" onclick="load_content('contents','page2.html')">friends</a></li>
+          <li><a href="#" onclick="load_content('contents','page3.html')">setting</a></li>
+      </ul>
+
+    </nav>
+<!--
+    <div id="contenits"> 
+    </div>
+-->
+    <object id="contents" type="text/html" ></object>
 
 
 
-   <p>Enter your push bullet token</p><br/>
-    <input type= "text" id= "token" name="token" maxlength="100" style="width:300px"/><br/><br/><br/>
-    <input class = "button" type="button" id ="button" value="login" Onclick="login()"/> <br/><br/>
-    <p id="result"></p>
-
-    <input class = "button" type="button" value ="gogogo" id ="go" onclick="gonext()" />
-    <p id ="goto_url">hellooo</p>
-
- 
-    <br/><br/>
-    <p>msg</p>
-    <input type= "text" id= "msg" name="msg" maxlength="500" style="width:500px"/><br/><br/><br/>
-    <input class = "button" type="button" id ="msg_button" value="send msg" Onclick="send()"/> <br/><br/>
-
-    <br/><br/>
-    <p>msg to :</p>
-    <input type= "text" id= "email" name="email" maxlength="50" style="width:80px"/><br/>
-    <input type= "text" id= "msg_to" name="msg_to" maxlength="500" style="width:500px"/><br/>
-    <p id ="email"></p>
-    <input class = "button" type="button" id ="msg_button_to" value="send msg to " Onclick="send_to()"/> <br/><br/>
-
-   <input class = "button" type="button" id ="button_user" value="user info" Onclick="get_user()"/> <br/><br/>
-    <p id ="user"></p>
-
-   <input class = "button" type="button" id ="button_history" value="history" Onclick="get_history()"/> <br/><br/>
-    <p id ="history"></p>
-
-    <input class = "button" type="button" id ="button_del" value="del_history" Onclick="del_history()"/> <br/><br/>
-    <p id ="del_history"></p>
-    </center>
+    <script type="text/javascript">
+        function load_content ( id , content) {
+            document.getElementById( id ).setAttribute("data",content);
+        }
+    </script>
 </body>
 
 </html>

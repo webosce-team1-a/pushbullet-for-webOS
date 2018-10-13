@@ -1,16 +1,48 @@
+/* layout */
+body {
+  background-color:#444444 ;
+  font-size: 20px;
+}
 
-body {background-color: #00A86B;}
-head {background-color: #00A86B;}
 
-h1{
+nav{
+    background: #00A86B;
+    position: fixed;
+    display: block;
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding: 50px;
+    top:0;
+    left:0;
+    text-align:center;
+}
+
+object{
+    display: block;
+    float: right;
+    width: 70%;
+    height: 100%; 
+
+    right: 0;
+    top: 0;
+}
+
+/*style*/
+h1, h2, h3{
     text-align: center;
     font-weight: bold;
     color: #FFF;
 }
+h1{font-size:50px;}
+h2{font-size:30px;}
 
 p {
-  text-align: center;
   color: #FFF;
+}
+a{
+    color: #fff;
+
 }
 
 .button {
