@@ -47,6 +47,17 @@ a{
 
 }
 
+.input_text{
+  text-align: center;
+  color: #000;
+}
+
+.input_text:focus{
+  text-align: center;
+  color: #000;
+  background-color: #FFD362;
+}
+
 .button {
   width: 200px;
   padding: 20px;
