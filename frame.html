@@ -11,20 +11,21 @@
 <body>
     <nav class=menu>
       <div class = "title">
+        <br/><br/>
         <h1>Push Bullet</h1>
         <h2>for webOS</h2>
       </div>
 
       <br/>
       <ul>
-          <li><a href="#" onclick="load_content('contents','pages/me.html')">me</a></li>
-          <li><a href="#" onclick="load_content('contents','pages/friends.html')">friends</a></li>
-          <li><a href="#" onclick="load_content('contents','pages/setting.html')">setting</a></li>
+          <li><a href="#" onclick="load_content('contents','pages/me.html')">me</a><br/></li>
+          <li><a href="#" onclick="load_content('contents','pages/friends.html')">friends</a><br/></li>
+          <li><a href="#" onclick="load_content('contents','pages/setting.html')">setting</a><br/></li>
       </ul>
 
     </nav>
 
-    <object id="contents" type="text/html" data="pages/login.html"></object>
+    <object id="contents" type="text/html" data="pages/me.html"></object>
 
     <script type="text/javascript">
         function load_content ( id , content) {
